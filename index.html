@@ -31,6 +31,7 @@
 <nav class="tabs" aria-label="Expense Tracker sections">
   <button class="tab active" data-tab="addPanel">＋ Add Expense</button>
   <button class="tab" data-tab="reportPanel">📋 Expense Report</button>
+  <button class="tab" data-tab="dailyPanel">📅 Daily Totals</button>
   <button class="tab" data-tab="dataPanel">📊 Data & Reports</button>
 </nav>
 
@@ -55,8 +56,13 @@
 <section class="card">
   <div class="list-head">
     <h2>Expenses Report</h2>
-    <label class="month-label" for="month">Select Month</label>
-    <input id="month" type="month" aria-label="Select month">
+    <label class="month-label">Select Month</label>
+    <div class="month-control">
+      <button id="monthButton" class="month-button" type="button" aria-haspopup="listbox" aria-expanded="false">
+        <span class="month-button-text">September 2026</span><span class="month-arrow">⌄</span>
+      </button>
+      <div id="monthMenu" class="month-menu" role="listbox"></div>
+    </div>
   </div>
 
   <div class="report-summary">
@@ -68,12 +74,39 @@
   <div class="table-wrap">
     <table>
       <thead>
-        <tr><th>Date</th><th>Expense</th><th>Amount</th><th>Day Total</th></tr>
+        <tr><th>Date</th><th>Expense</th><th>Amount</th></tr>
       </thead>
       <tbody id="tableBody"></tbody>
     </table>
   </div>
   <div id="empty">No expenses recorded for this month.</div>
+</section>
+</section>
+
+<section id="dailyPanel" class="panel">
+<section class="card">
+  <div class="list-head">
+    <h2>Daily Totals</h2>
+    <label class="month-label">Select Month</label>
+    <div class="month-control">
+      <button id="dailyMonthButton" class="month-button" type="button" aria-haspopup="listbox" aria-expanded="false">
+        <span class="month-button-text">September 2026</span><span class="month-arrow">⌄</span>
+      </button>
+      <div id="dailyMonthMenu" class="month-menu" role="listbox"></div>
+    </div>
+  </div>
+  <div class="report-summary">
+    <div><span>Selected Month</span><strong id="dailyReportMonth">—</strong></div>
+    <div><span>Days With Expenses</span><strong id="dailyCount">0</strong></div>
+    <div><span>Monthly Total</span><strong id="dailyGrand">₱0.00</strong></div>
+  </div>
+  <div class="table-wrap daily-table-wrap">
+    <table>
+      <thead><tr><th>Date</th><th>Total for the Day</th></tr></thead>
+      <tbody id="dailyBody"></tbody>
+    </table>
+  </div>
+  <div id="dailyEmpty" class="empty">No daily totals for this month.</div>
 </section>
 </section>
 
@@ -91,6 +124,26 @@
 </section>
 </section>
 </main>
+
+<div id="editModal" class="modal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="editTitle">
+    <div class="modal-head">
+      <h2 id="editTitle">Update Expense</h2>
+      <button id="closeEdit" class="close-btn" aria-label="Close">×</button>
+    </div>
+    <label for="editDate">Date</label>
+    <input id="editDate" type="date">
+    <label for="editDesc">Expense</label>
+    <input id="editDesc" type="text">
+    <label for="editAmount">Amount</label>
+    <input id="editAmount" type="number" inputmode="decimal" min="0" step="0.01">
+    <div class="modal-actions">
+      <button id="cancelEdit" class="cancel-btn">Cancel</button>
+      <button id="updateExpense" class="primary update-btn">Update Expense</button>
+    </div>
+  </div>
+</div>
+
 <script src="app.js"></script>
 </body>
 </html>
