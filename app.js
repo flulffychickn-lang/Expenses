@@ -9,6 +9,20 @@ function show(t){$("msg").textContent=t;clearTimeout(window.tm);window.tm=setTim
 let selectedMonth=today().slice(0,7);
 let selectedDailyMonth=selectedMonth;
 
+
+function displayDate(value){
+ if(!value)return "";
+ const p=value.split("-");
+ if(p.length!==3)return value;
+ const d=new Date(Number(p[0]),Number(p[1])-1,Number(p[2]));
+ return d.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
+}
+function syncDateDisplay(){
+ const d=$("date"),out=$("dateDisplay");
+ if(d&&out)out.textContent=displayDate(d.value);
+ const ed=$("editDate"),eo=$("editDateDisplay");
+ if(ed&&eo)eo.textContent=displayDate(ed.value);
+}
 function monthOptions(){
  const months=new Set(),now=new Date();
  for(let y=now.getFullYear()-5;y<=now.getFullYear()+5;y++)
@@ -150,6 +164,7 @@ function openEdit(id){
  editingId=id;
  $("editDate").value=x.date;
  $("editDesc").value=x.desc;
+ syncDateDisplay();
  $("editAmount").value=x.amount;
  $("editModal").classList.add("open");
  $("editModal").setAttribute("aria-hidden","false");
@@ -178,7 +193,7 @@ function updateExpense(){
 function del(id){const x=data.find(a=>a.id===id);if(x&&confirm("Delete "+x.desc+" ("+money(x.amount)+")?")){data=data.filter(a=>a.id!==id);save();render()}}
 
 $("add").onclick=add;
-$("date").onchange=render;
+$("date").onchange=()=>{syncDateDisplay();render();};
 
 
 $("updateExpense").onclick=updateExpense;
@@ -264,6 +279,7 @@ $("excel").onclick=()=>{
 };
 setupTabs();
 $("date").value=today();
+syncDateDisplay();
 populateMonths();
 render();
 renderDailyTotals();
@@ -271,3 +287,10 @@ renderDailyTotals();
 
 
 // Keep the two month views synchronized after an update/import.
+
+document.addEventListener("DOMContentLoaded",()=>{
+ const d=$("date"),ed=$("editDate");
+ if(d)d.addEventListener("change",syncDateDisplay);
+ if(ed)ed.addEventListener("change",syncDateDisplay);
+ syncDateDisplay();
+});

@@ -1,4 +1,4 @@
-# Expenses Tracker v3.1
+# Expenses Tracker v3.3
 Simple elderly-friendly daily and monthly expense tracker.
 
 Features:
@@ -58,3 +58,14 @@ The expense table now places Edit and Delete controls directly below each expens
 ### v3.1
 - Final mobile/iPhone Date field width and text alignment fix.
 - Prevents the native date control from extending outside the card.
+
+
+### v3.2
+- Fixed the remaining iPhone/Safari Date field overflow by placing the native date input inside a fixed-width clipping wrapper.
+- The Date control now aligns with the Expense and Amount fields while retaining the native date picker.
+
+
+### v3.3
+- Rebuilt the Date field as a fixed-width visible display with a transparent native date picker overlay.
+- Prevents iPhone/Safari's native date control from drawing outside the card.
+- Keeps the normal date picker behavior when the Date field is tapped.

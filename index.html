@@ -39,7 +39,10 @@
 <section class="card">
   <h2>Add Expense</h2>
   <label for="date">Date</label>
-  <input id="date" type="date">
+  <div class="date-field-wrap">
+    <span id="dateDisplay" class="date-display">Sep 9, 2026</span>
+    <input id="date" type="date" aria-label="Date">
+  </div>
 
   <label for="desc">Expense</label>
   <input id="desc" type="text" placeholder="Example: Food, Medicine, Transportation">
@@ -132,7 +135,10 @@
       <button id="closeEdit" class="close-btn" aria-label="Close">×</button>
     </div>
     <label for="editDate">Date</label>
-    <input id="editDate" type="date">
+    <div class="date-field-wrap">
+      <span id="editDateDisplay" class="date-display">Sep 9, 2026</span>
+      <input id="editDate" type="date" aria-label="Date">
+    </div>
     <label for="editDesc">Expense</label>
     <input id="editDesc" type="text">
     <label for="editAmount">Amount</label>
