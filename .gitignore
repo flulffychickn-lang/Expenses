@@ -1,0 +1,13 @@
+# Expense backups
+expenses-backup-*.json
+
+# Excel reports
+expenses-report-*.xlsx
+
+# CSV reports
+expenses-report-*.csv
+
+# Editor/system files
+.vscode/
+.DS_Store
+Thumbs.db
