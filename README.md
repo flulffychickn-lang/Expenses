@@ -1,4 +1,4 @@
-# Expenses Tracker v2.4
+# Expenses Tracker v2.5
 Simple elderly-friendly daily and monthly expense tracker.
 
 Features:
@@ -26,3 +26,6 @@ The expense table uses a fixed-height internal scrolling area with a visible ver
 
 
 The expense table now places Edit and Delete controls directly below each expense name for easier correction on mobile.
+
+
+Mobile alignment: form inputs, especially the native Date field, are constrained to the card width to prevent horizontal page overflow on iPhone/Safari.
