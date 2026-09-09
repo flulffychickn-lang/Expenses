@@ -1,4 +1,4 @@
-# Expenses Tracker v3.0
+# Expenses Tracker v3.1
 Simple elderly-friendly daily and monthly expense tracker.
 
 Features:
@@ -53,3 +53,8 @@ The expense table now places Edit and Delete controls directly below each expens
 - Aligned Update and Delete controls consistently beneath every expense name.
 - Added a dedicated action wrapper so buttons remain aligned and do not drift between rows.
 - Kept the portrait-friendly table and internal vertical scrolling.
+
+
+### v3.1
+- Final mobile/iPhone Date field width and text alignment fix.
+- Prevents the native date control from extending outside the card.

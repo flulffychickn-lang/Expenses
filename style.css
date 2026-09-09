@@ -301,3 +301,39 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
     font-size:13px;
   }
 }
+
+/* v3.1: final iPhone/Safari date-field alignment */
+input[type="date"]{
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  box-sizing:border-box !important;
+  display:block !important;
+  text-align:left !important;
+  text-align-last:left !important;
+  padding-left:14px !important;
+  padding-right:14px !important;
+  overflow:hidden !important;
+}
+input[type="date"]::-webkit-date-and-time-value{
+  text-align:left !important;
+  min-width:0 !important;
+  width:100% !important;
+}
+input[type="date"]::-webkit-calendar-picker-indicator{
+  margin:0 !important;
+  padding:0 !important;
+  flex:0 0 auto;
+}
+@media(max-width:700px){
+  .card{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+  }
+  .card input[type="date"]{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+  }
+}
