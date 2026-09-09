@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b6b57">
+<title>Expenses Tracker</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+<header class="topbar">
+  <div>
+    <h1>Expenses Tracker</h1>
+    <p>Simple and easy daily expense recording</p>
+  </div>
+</header>
+
+<section class="totals">
+  <div class="total-card today-card">
+    <span>Today's Total</span>
+    <b id="daily">₱0.00</b>
+  </div>
+  <div class="total-card month-card">
+    <span>Monthly Total</span>
+    <b id="monthly">₱0.00</b>
+  </div>
+</section>
+
+<nav class="tabs" aria-label="Expense Tracker sections">
+  <button class="tab active" data-tab="addPanel">＋ Add Expense</button>
+  <button class="tab" data-tab="reportPanel">📋 Expense Report</button>
+  <button class="tab" data-tab="dataPanel">📊 Data & Reports</button>
+</nav>
+
+<section id="addPanel" class="panel active">
+<section class="card">
+  <h2>Add Expense</h2>
+  <label for="date">Date</label>
+  <input id="date" type="date">
+
+  <label for="desc">Expense</label>
+  <input id="desc" type="text" placeholder="Example: Food, Medicine, Transportation">
+
+  <label for="amount">Amount</label>
+  <input id="amount" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+
+  <button id="add" class="primary">＋ Add Expense</button>
+  <div id="msg" aria-live="polite"></div>
+</section>
+</section>
+
+<section id="reportPanel" class="panel">
+<section class="card">
+  <div class="list-head">
+    <h2>Expenses Report</h2>
+    <label class="month-label" for="month">Select Month</label>
+    <input id="month" type="month" aria-label="Select month">
+  </div>
+
+  <div class="report-summary">
+    <div><span>Selected Month</span><strong id="reportMonth">—</strong></div>
+    <div><span>Number of Expenses</span><strong id="count">0</strong></div>
+    <div><span>Grand Total</span><strong id="grand">₱0.00</strong></div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Expense</th><th>Amount</th><th>Day Total</th></tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+  <div id="empty">No expenses recorded for this month.</div>
+</section>
+</section>
+
+<section id="dataPanel" class="panel">
+<section class="card">
+  <h2>Data & Reports</h2>
+  <div class="tools">
+    <button id="excel" class="excel">📊 Excel Report</button>
+    <button id="backup">💾 Backup</button>
+    <button id="import">📥 Import</button>
+    <button id="clear" class="danger">🗑 Clear All Data</button>
+  </div>
+  <input id="file" type="file" accept=".json,application/json" hidden>
+  <p class="help">Choose a month in Expense Report, then press <b>Excel Report</b>. The Excel file will contain every expense for that month, each day's total, and the monthly grand total.</p>
+</section>
+</section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
